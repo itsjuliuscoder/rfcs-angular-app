@@ -22,11 +22,13 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/css/animate.css"
+              "src/assets/css/animate.css",
+              "src/_redirects"
+
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"                      
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.js",
