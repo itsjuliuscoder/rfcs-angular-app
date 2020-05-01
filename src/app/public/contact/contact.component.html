@@ -25,10 +25,10 @@
         <a class="navbar-brand js-scroll-trigger" href="/index"><img src="./../../../assets/logo.png" class="img-fluid"></a><button class="navbar-toggler navbar-toggler-right" style="color: #000000 !important;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/about">About</a></li>
+                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li> -->
+                <li class="nav-item active"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
             </ul>
         </div>
     </div>
@@ -51,7 +51,13 @@
           <div class="col-lg-8 text-center">
               <h2 class="mt-0">Contact Us Form</h2>
               <hr class="divider my-4" />
-
+              <form action="/post" method="post">
+                <input class="form-control" name="name" placeholder="Name..." /><br />
+                <input class="form-control" name="phone" placeholder="Phone..." /><br />
+                <input class="form-control" name="email" placeholder="E-mail..." /><br />
+                <textarea class="form-control" name="text" placeholder="How can we help you?" style="height:150px;"></textarea><br />
+                <input class="btn btn-primary btn-lg" type="submit" value="Send" /><br /><br />
+              </form>
               <!-- <a class="btn btn-light btn-xl js-scroll-trigger" href="#">Learn More</a> -->
           </div>
       </div>
