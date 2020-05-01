@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["iCMj+"]); }
+
+__d("GeoSwitch.react",["FDSGeodesicThemeProvider.react","FDSSwitch.react","React","makeGeoComponent"],(function(a,b,c,d,e,f){"use strict";var g=b("React");function a(a){var c=a.isLabelHidden,d=a.labelPosition;d=d===void 0?"prefix":d;a=babelHelpers.objectWithoutPropertiesLoose(a,["isLabelHidden","labelPosition"]);return g.jsx(b("FDSGeodesicThemeProvider.react"),{children:g.jsx(b("FDSSwitch.react"),babelHelpers["extends"]({labelIsHidden:c,labelPosition:d},a))})}e.exports=b("makeGeoComponent")("GeoSwitch",a)}),null);

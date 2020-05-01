@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["qMMvM"]); }
+
+__d("PagesInfoRequestBadgeCount",["Arbiter","PagesManagerActivitySection"],(function(a,b,c,d,e,f){"use strict";var g=null;a={setCount:function(a){g=a,b("Arbiter").inform("PagesManagerLayout/updateCount",{count:a,section:b("PagesManagerActivitySection").INFO_REQUESTS})},decrementCount:function(){g&&this.setCount(g-1)}};e.exports=a}),null);

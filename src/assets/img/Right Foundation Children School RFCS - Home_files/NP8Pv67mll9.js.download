@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["Ir4S0"]); }
+
+__d("AdsUEditorUnifiedCreationUtils",["AdCampaignDestination"],(function(a,b,c,d,e,f){"use strict";function a(a){return a===b("AdCampaignDestination").MESSAGING_MESSENGER_WHATSAPP}function c(a){return a["delete"]("callToActionField")["delete"]("destinationPageField")}e.exports={isMultiDestination:a,deleteNonUnifiedCreationKeys:c}}),null);

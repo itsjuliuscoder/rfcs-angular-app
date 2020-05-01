@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["E9ZXk"]); }
+
+__d("GeoDateRangePickerDefaultPresets",["fbt","GeoDateRangeComparePresets","GeoDateRangePresets"],(function(a,b,c,d,e,f,g){"use strict";a={text:g._("Custom"),value:"CUSTOM"};d=[(c=b("GeoDateRangePresets")).TODAY,c.YESTERDAY,c.LAST_7_DAYS,c.LAST_14_DAYS,c.LAST_28_DAYS,c.THIS_MONTH,c.THIS_QUARTER];f=[b("GeoDateRangeComparePresets").PREVIOUS_PERIOD,b("GeoDateRangeComparePresets").PREVIOUS_MONTH,b("GeoDateRangeComparePresets").PREVIOUS_YEAR,a];e.exports={DEFAULT_PRESETS:d,COMPARE_PRESETS:f,CUSTOM:a}}),null);

@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["LElFm"]); }
+
+__d("adsCampaignGroupMetricsMetadataAccessorsFactory",["AdsAdObjectsAccessorUtils"],(function(a,b,c,d,e,f){"use strict";var g=b("AdsAdObjectsAccessorUtils").baseFieldAccessorFactory,h=b("AdsAdObjectsAccessorUtils").basicListFieldAccessorFactory;a=function(a,b){return babelHelpers["extends"]({},g(a,b),{budget_optimization:h(a,b,"budget_optimization")})};e.exports=a}),null);

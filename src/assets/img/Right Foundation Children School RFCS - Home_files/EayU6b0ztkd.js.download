@@ -1,0 +1,3 @@
+if (self.CavalryLogger) { CavalryLogger.start_js(["UOCSa"]); }
+
+__d("GeoSelectorItem.react",["FDSGeodesicThemeProvider.react","FDSSelectorItem.react","React","makeGeoComponent"],(function(a,b,c,d,e,f){"use strict";var g=b("React");function a(a,c){var d=a.description;a=babelHelpers.objectWithoutPropertiesLoose(a,["description"]);return g.jsx(b("FDSGeodesicThemeProvider.react"),{children:g.jsx(b("FDSSelectorItem.react"),babelHelpers["extends"]({},a,{ref:c,subText:d}))})}e.exports=b("makeGeoComponent")("GeoSelectorItem",g.forwardRef(a))}),null);
