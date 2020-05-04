@@ -1,0 +1,86 @@
+.login {
+  background-color: #aefc9b;
+  color: #298512;
+  width: 100%;
+  position: relative;
+  margin: auto;
+  padding: 9em;
+}
+.login-form {
+  width: 65%;
+  position: relative;
+  margin: auto;
+  padding: 9px;
+}
+
+.login a {
+  font-weight: 700;
+  color: #5AB41D;
+}
+.login .login-text h2 {
+  font-size: 4em;
+}
+.login .login-text h4 {
+  font-size: 2em;
+  color: rgb(166, 247, 112) !important;
+}
+.login_img {
+  width: 40%;
+  margin: auto;
+}
+.login_img img {
+  width: 100%;
+  margin: auto;
+}
+.login .card .card-body form {
+  width: 100% !important;
+  padding: 2em;
+  position: relative;
+}
+.login .card .card-body form input[type="email"]{
+  width: 100% !important;
+  margin: 1em auto;
+  padding: 22px;
+}
+.login .card .card-body form input[type="password"]{
+  width: 100% !important;
+  margin: 1em auto;
+  padding: 22px;
+}
+.login .card .card-body form input[type="submit"]{
+  background-color: #5AB41D;
+  font-weight: 700;
+  border: none;
+  padding: 9px;
+  float: right;
+}
+.login .card .card-body form button.btn-login {
+  background-color: #5AB41D;
+  font-weight: 700;
+  border: none;
+  padding: 9px;
+}
+.login .card .card-body form button.btn-login:hover {
+  background-color: #295508 !important;;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}

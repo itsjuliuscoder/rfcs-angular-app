@@ -1,0 +1,49 @@
+<div class="login">
+  <div class="container">
+        <div class="login-form mt-4">
+            <h3 class="text-center">Login to School Portal</h3><br>
+            <div class="card mt-5">
+              <div class="card-body">
+                  <div class="login_img">
+                      <img src="./../../../assets/logo.png" class="img-fluid" alt="AfriHow Logo">
+                  </div>
+                  <form>
+                      <div>
+                          <input [(ngModel)]="loginData.email" type="email" required class="form-control"  name="email" placeholder="Email Address">
+                          <!-- <div class="alert" role="alert" *ngIf="loginEmail.invalid && loginEmail.touched">
+                            <span style="color: red;" *ngIf="loginEmail.errors.required">Valid Email Address is required</span>
+                            <span style="color: red;" *ngIf="loginEmail.errors.maxlength">Maximum characters is 30</span>
+                            <span style="color: red;" *ngIf="loginEmail.errors.minlength">Minimum characters is 5</span>
+                            <span style="color: red;" *ngIf="loginEmail.errors.pattern">Invalid characters only</span>
+                          </div> -->
+                      </div>
+                      <div>
+                          <input [(ngModel)]="loginData.password"  type="password" required class="form-control" name="password" placeholder="Password">
+                          <!-- <div class="alert" role="alert" *ngIf="loginPassword.invalid && loginPassword.touched">
+                            <span style="color: red;" *ngIf="loginPassword.errors.required">Password is required</span>
+                            <span style="color: red;" *ngIf="loginPassword.errors.maxlength">Maximum characters is 30</span>
+                            <span style="color: red;" *ngIf="loginPassword.errors.minlength">Minimum characters is 5</span>
+                            <span style="color: red;" *ngIf="loginPassword.errors.pattern">Invalid characters only</span>
+                          </div> -->
+                      </div>
+                      <!-- <div>
+                        <a href="#" routerLink="#">Forgot Password? Please Contact Admin</a>
+                      </div> -->
+                      <div class="form-row mt-4">
+                          <div class="col-md-8">
+                            <a href="#" routerLink="#">Forgot Password? Please Contact Admin</a>
+                          </div>
+                          <div class="col-md-4">
+                            <button type="submit" (click)="post()" class="btn btn-login btn-info btn-lg">
+                              <!-- <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i> -->
+                              Continue
+                            </button>
+                          </div>
+                          <div class="col-md-6"></div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
