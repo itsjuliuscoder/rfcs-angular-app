@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
             this.loginErr = true;
             this.loginErrorMsg = err.error.message || 'Email and Password Combination Failed';
           }
-          this.getDisableBtn(false);
+          this.getDisableBtn(true);
         }
       );
     }

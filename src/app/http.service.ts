@@ -16,7 +16,7 @@ export class HttpService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  public baseUrl = 'http://localhost:3000';
+  public baseUrl = 'https://derights-api.herokuapp.com';
 
   user;
 
