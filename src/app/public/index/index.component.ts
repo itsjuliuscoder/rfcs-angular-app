@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ApiService } from './../../api.service';
-
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -9,10 +7,9 @@ import { ApiService } from './../../api.service';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.apiService.getMessages();
   }
 
 }

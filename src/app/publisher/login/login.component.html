@@ -7,29 +7,41 @@
                   <div class="login_img">
                       <img src="./../../../assets/logo.png" class="img-fluid" alt="AfriHow Logo">
                   </div>
-                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required">email is required</div>
-                        </div>
+                  <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="alert alert-danger" role="alert" *ngIf="loginErr">
+                      <button aria-label="Close" class="close ng-star-inserted" (click)="clearLoginErr()" type="button"><span aria-hidden="true">×</span></button>{{loginErrorMsg}}
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">
-                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                            Login
-                        </button>
-                        <a routerLink="/register" class="btn btn-link">Register</a>
-                    </div>
-                </form>
+                      <div>
+                          <input type="email" required class="form-control" formControlName="loginEmail" placeholder="Email Address">
+                          <div class="alert" role="alert" *ngIf="loginEmail.invalid && loginEmail.touched">
+                            <span style="color: red;" *ngIf="loginEmail.errors.required">Valid Email Address is required</span>
+                            <span style="color: red;" *ngIf="loginEmail.errors.maxlength">Maximum characters is 30</span>
+                            <span style="color: red;" *ngIf="loginEmail.errors.minlength">Minimum characters is 5</span>
+                            <span style="color: red;" *ngIf="loginEmail.errors.pattern">Invalid characters only</span>
+                          </div>
+                      </div>
+                      <div>
+                          <input type="password" required class="form-control" formControlName="loginPassword" placeholder="Password">
+                          <div class="alert" role="alert" *ngIf="loginPassword.invalid && loginPassword.touched">
+                            <span style="color: red;" *ngIf="loginPassword.errors.required">Password is required</span>
+                            <span style="color: red;" *ngIf="loginPassword.errors.maxlength">Maximum characters is 30</span>
+                            <span style="color: red;" *ngIf="loginPassword.errors.minlength">Minimum characters is 5</span>
+                            <span style="color: red;" *ngIf="loginPassword.errors.pattern">Invalid characters only</span>
+                          </div>
+                      </div>
+                      <div>
+                        <a href="#" routerLink="/reset-password">Forgot Password?</a>
+                      </div>
+                      <div class="form-row mt-4">
+                          <div class="col-md-7"><p>New to AfriHow? <a href="#" routerLink="/register">Create Account</a></p></div>
+                          <div class="col-md-5">
+                            <button type="submit" [disabled]="getDisableLoginState" class="btn btn-login btn-info">
+                              <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i>
+                              Continue
+                            </button>
+                          </div>
+                      </div>
+                  </form>
                 </div>
             </div>
         </div>

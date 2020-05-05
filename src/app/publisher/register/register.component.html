@@ -1,1 +1,71 @@
-<p>register works!</p>
+<div class="mylogin-wrapper">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-5">
+              <div class="login-text">
+                <h2>Get Started in Minutes</h2>
+                <h4>Register Now</h4>
+              </div>
+          </div>
+          <div class="col-md-7">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="login_img">
+                          <img src="../../../../assets/afrihow_sm.jpg" class="img-fluid" alt="AfriHow Logo">
+                      </div>
+                      <!-- <h4 class="text-center">AfriHow</h4> -->
+                      <form [formGroup]="registerForm" (ngSubmit)="register()">
+                        <div class="alert alert-danger" role="alert" *ngIf="registerErr">
+                          <button aria-label="Close" class="close ng-star-inserted" (close)="clearRegisterErr()" type="button"><span aria-hidden="true">×</span></button>{{registerErrorMsg}}
+                        </div>
+                        <div class="form-row">
+                            <input type="text" required class="form-control" formControlName="fullName" placeholder="Full Name">
+                            <div class="alert" role="alert" *ngIf="fullName.invalid && fullName.touched">
+                              <span style="color: red;" *ngIf="fullName.errors.required">Full Name is required</span>
+                              <span style="color: red;" *ngIf="fullName.errors.maxlength">Maximum characters is 30</span>
+                              <span style="color: red;" *ngIf="fullName.errors.minlength">Minimum characters is 3</span>
+                              <span style="color: red;" *ngIf="fullName.errors.pattern">Invalid characters only</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                          <input type="email" required class="form-control" formControlName="userEmail" placeholder="Email Address">
+                          <div class="alert" role="alert" *ngIf="userEmail.invalid && userEmail.touched">
+                            <span style="color: red;" *ngIf="userEmail.errors.required">Email Address is required</span>
+                            <span style="color: red;" *ngIf="userEmail.errors.email">Invalid Email Address</span>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="col-md-6">
+                              <input type="password" required class="form-control" formControlName="userPassword" placeholder="Password">
+                              <div class="alert" role="alert" *ngIf="userPassword.invalid && userPassword.touched">
+                                <span style="color: red;" *ngIf="userPassword.errors.required">Password  is required</span>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <input type="password" required class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+                              <div class="alert" role="alert" *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                                <span *ngIf="confirmPassword.errors?.required">Confirm Password is required</span>
+                                <span *ngIf="confirmPassword.errors?.equalTo">Password does not match </span>
+                              </div>
+                          </div>
+                        </div>
+                        <div>
+                          <p>By clicking Sign Up, you agree to AfriHow's <a href="#" routerLink="/terms">Terms of Use</a> & <a href="#" routerLink="/privacy">Privacy Policies</a></p>
+                        </div>
+                        <div class="form-row mt-2">
+                            <div class="col-md-6"><p>Already a user? <a href="#" routerLink="/login">Sign In</a></p></div>
+                            <div class="col-md-6">
+                              <button type="submit" [disabled]="getDisableRegisterState" class="btn btn-login btn-info">
+                                <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i>
+                                Sign Up
+                              </button>
+                            </div>
+                            <!-- <div class="col-md-6"><input type="submit" [disabled]="getDisableRegisterState" class="btn btn-info btn-login pull-right pl-4 pr-4" value="Continue"></div> -->
+                        </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

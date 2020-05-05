@@ -1,74 +1,134 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../../auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
-
-import { AlertService } from './../../alert.service';
+import { HttpService } from './../../http.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators, FormBuilder, FormControlName } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
+import { RegisterInterface, LoginInterface } from './../../interface/auth-interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-  loginData = {};
-  public error: string;
-  loginErr;
+
+  authType = '';
+  registerErr = false;
+  loginErr = false;
   loginErrorMsg;
-  process;
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
-  formBuilder: any;
+  public registerForm: FormGroup;
+  public loginForm: FormGroup;
+  isRegister = false;
+  isLogin = false;
+  errMessage;
+  resendResponse;
+  urlPath: string;
+  disableBtn = false;
+  responseErr;
+  confirmEmailErr;
 
+  constructor(private route: ActivatedRoute,
+              private fb: FormBuilder,
+              private router: Router,
+              private httpservice: HttpService
+    ) {
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router, private alertService: AlertService) {
-
-    // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-        this.router.navigate(['/home']);
-    }
   }
 
   ngOnInit() {
+    this.route.url.subscribe(data => {
+      this.authType = data[data.length - 1].path;
+    });
     this.loginFormField();
-    // get return url from route parameters or default to '/'
-    // tslint:disable-next-line: no-string-literal
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  clearLoginErr() {
+    this.loginErr = false;
   }
 
   loginFormField(){
-    this.loginForm = this.formBuilder.group({
-      // email: ['', Validators.required],
-      email: new FormControl('', [Validators.required]),
-      password: ['', Validators.required]
+    this.loginForm = new FormGroup({
+        loginEmail: new FormControl('', [Validators.required, CustomValidators.email]),
+        loginPassword: new FormControl('', Validators.required),
     });
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get loginEmail() { return this.loginForm.get('loginEmail'); }
+  get loginPassword() { return this.loginForm.get('loginPassword'); }
 
-  onSubmit() {
-      this.submitted = true;
-
-      // stop here if form is invalid
-      if (this.loginForm.invalid) {
-          return;
-      }
-
-      this.loading = true;
-      this.authService.login(this.f.email.value, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-              data => {
-                  this.router.navigate([this.returnUrl]);
-              },
-              error => {
-                  this.alertService.error(error);
-                  this.loading = false;
-              });
+  login() {
+    if (this.loginForm.valid) {
+      const payload = {
+        email: this.loginEmail.value,
+        password: this.loginPassword.value
+      };
+      this.resetField();
+      this.getDisableBtn(true);
+      this.httpservice.login(payload).subscribe(
+        (data: LoginInterface) => {
+          this.getDisableBtn(false);
+          this.router.navigate(['/dashboard']);
+        }, err => {
+          if (err.code === 400) {
+            this.getSweetAlert('', 'warning', err.error.message, 'login');
+          } else {
+            this.loginErr = true;
+            this.loginErrorMsg = err.error.messgae || 'Something went wrong, Please try again ';
+          }
+          this.getDisableBtn(false);
+        }
+      );
+    }
   }
 
+  resetField() {
+    this.loginErr = null;
+    this.registerErr = null;
+  }
+
+  private getDisableBtn(value: boolean) { this.disableBtn = value; }
+  get getDisableLoginState() { return this.loginForm.invalid || this.disableBtn; }
+
+  getSweetAlert(title, type, text, route ) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false,
+    });
+    swalWithBootstrapButtons.fire({
+      title,
+      text,
+      focusConfirm: false,
+      showCloseButton: true,
+      // showConfirmButton: route === 'login' ? true : false,
+      confirmButtonText: route === 'login' ? 'Click to resend link' : 'Ok',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        if (route === 'login') {
+          this.httpservice.resend(this.loginEmail.value).subscribe(
+            (data: any) => {
+              this.resendResponse = data;
+            }, err => console.log(err)
+          );
+        } else {
+          this.router.navigate(['/register']);
+        }
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'error'
+        ); }
+    });
+  }
 }
