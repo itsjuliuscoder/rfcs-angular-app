@@ -32,8 +32,8 @@
                     <div class="form-row mt-4">
                         <div class="col-md-9"><p>Forgot Password or could not Log In? Kindly Contact RFCS Admin </p></div>
                         <div class="col-md-3">
-                          <button type="submit" class="btn btn-login btn-info">
-                            <!-- <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i> -->
+                          <button type="submit" [disabled]="getDisableLoginState" class="btn btn-login btn-info">
+                            <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i>
                             Continue
                           </button>
                         </div>

@@ -5,6 +5,7 @@
   position: relative;
   margin: auto;
   padding: 9em;
+  height: 100%;
 }
 .login-form {
   width: 65%;
@@ -64,19 +65,59 @@
   background-color: #295508 !important;;
 }
 
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
+@media (max-width: 576px) {
+  .login {
+    margin: 0;
+    padding: 7px;
+    height: 100%;
+  }
+  .login-form {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    padding: 6px;
+  }
+  .login-form .card {
+    width:100% !important;
+    margin: auto;
+    padding: 9px;
   }
 }
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
+
+@media (max-width: 768px) {
+  .login {
+    margin: 0;
+    padding: 7px;
+    height: 100%;
+  }
+  .login-form {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    padding: 6px;
+  }
+  .login-form .card {
+    width:100% !important;
+    margin: auto;
+    padding: 9px;
   }
 }
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
+@media (max-width: 992px) {
+  .login {
+    margin: 0;
+    padding: 12px;
+    height: 100%;
+  }
+  .login-form {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    padding: 6px;
+  }
+  .login-form .card {
+    width:100% !important;
+    margin: auto;
+    padding: 9px;
   }
 }
 @media (min-width: 1200px) {
