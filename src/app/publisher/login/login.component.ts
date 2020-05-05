@@ -75,11 +75,11 @@ export class LoginComponent implements OnInit {
           this.getDisableBtn(false);
           this.router.navigate(['/home']);
         }, err => {
-          if (err.code === 400) {
-            this.getSweetAlert('', 'warning', err.error.message, 'login');
+          if (err.status === 401) {
+            this.getSweetAlert('error', 'Oops', 'warning', 'Email Address & Password Combination Failed', 'login');
           } else {
             this.loginErr = true;
-            this.loginErrorMsg = err.error.message || 'Email and Password Combination Failed';
+            this.loginErrorMsg = err.error.message || 'Something went wrong, Try again.';
           }
           this.getDisableBtn(true);
         }
@@ -95,7 +95,7 @@ export class LoginComponent implements OnInit {
   private getDisableBtn(value: boolean) { this.disableBtn = value; }
   get getDisableLoginState() { return this.loginForm.invalid || this.disableBtn; }
 
-  getSweetAlert(title, type, text, route ) {
+  getSweetAlert(icon, title, type, text, route ) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-primary',
@@ -104,21 +104,18 @@ export class LoginComponent implements OnInit {
       buttonsStyling: false,
     });
     swalWithBootstrapButtons.fire({
+      icon,
       title,
       text,
       focusConfirm: false,
       showCloseButton: true,
       // showConfirmButton: route === 'login' ? true : false,
-      confirmButtonText: route === 'login' ? 'Click to resend link' : 'Ok',
+      confirmButtonText: route === 'login' ? 'Try Again' : 'Ok',
       reverseButtons: true
     }).then((result) => {
       if (result.value) {
         if (route === 'login') {
-          this.httpservice.resend(this.loginEmail.value).subscribe(
-            (data: any) => {
-              this.resendResponse = data;
-            }, err => console.log(err)
-          );
+          this.router.navigate(['/login']);
         } else {
           this.router.navigate(['/register']);
         }
