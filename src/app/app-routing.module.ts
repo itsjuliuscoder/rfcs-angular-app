@@ -18,28 +18,34 @@ import { PricingComponent} from './public/pricing/pricing.component';
 import { ConfirmationComponent } from './publisher/confirmation/confirmation.component';
 import { ResendComponent } from './publisher/resend/resend.component';
 import { ResetPasswordComponent } from './publisher/reset-password/reset-password.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { HomeComponent } from './publisher/home/home.component';
+import { SubjectComponent } from './publisher/subject/subject.component';
+import { ProfileComponent } from './publisher/profile/profile.component';
 
 const routes: Routes = [
 
   { path: '', redirectTo: '/index', pathMatch: 'full' },
-  { path: 'about', component: AboutComponent, data: {title : 'About AfriHow'}},
+  { path: 'about', component: AboutComponent, data: {title : 'About Right Foundation Children School'}},
   { path: 'index', component: IndexComponent, data: {title : 'Thinking Differently - Right Foundation Children School'}},
-  { path: 'blog', component: BlogComponent, data: {title : 'Blog - AfriHow'} },
-  { path: 'contact', component: ContactComponent, data: {title : 'Contact Us - AfriHow'} },
-  { path: 'legal', component: LegalComponent, data: {title : 'About AfriHow'} },
-  { path: 'terms', component: TermsComponent, data: {title : 'Terms of Use - AfriHow'} },
-  { path: 'privacy', component: PrivacyComponent,data: {title : 'Privacy Policies - AfriHow'} },
-  { path: 'support', component: SupportComponent, data: {title : 'Support - AfriHow'}},
-  { path: 'blog/:id', component: BlogDetailsComponent, data: {title : 'Blog/ - AfriHow'}},
-  { path: 'login', component: LoginComponent, data: {title : 'Continue AfriHow'}},
-  { path: 'register', component: RegisterComponent, data: {title : 'Get Started with AfriHow'}},
-  { path: 'reset-password', component: ForgotPasswordComponent, data: {title : 'Forgot Password - AfriHow'}},
+  { path: 'blog', component: BlogComponent, data: {title : 'Blog - Right Foundation Children School'} },
+  { path: 'contact', component: ContactComponent, data: {title : 'Contact Us - Right Foundation Children School'} },
+  { path: 'legal', component: LegalComponent, data: {title : 'About Right Foundation Children School'} },
+  { path: 'terms', component: TermsComponent, data: {title : 'Terms of Use - Right Foundation Children School'} },
+  { path: 'privacy', component: PrivacyComponent, data: {title : 'Privacy Policies - Right Foundation Children School'} },
+  { path: 'support', component: SupportComponent, data: {title : 'Support - Right Foundation Children School'}},
+  { path: 'blog/:id', component: BlogDetailsComponent, data: {title : 'Blog/ - Right Foundation Children School'}},
+  { path: 'login', component: LoginComponent, data: {title : 'Login - Right Foundation Children School'}},
+  { path: 'register', component: RegisterComponent, data: {title : 'Get Started with Right Foundation Children School'}},
+  { path: 'reset-password', component: ForgotPasswordComponent, data: {title : 'Forgot Password - Right Foundation Children School'}},
   { path: 'faqs', component: FaqsComponent, data: {title : 'FAQs - AfriHow'}},
-  { path: 'pricing', component: PricingComponent, data: {title : 'Plans & Pricing - AfriHow'}},
-  { path: 'support', component: SupportComponent, data: {title : 'Support - AfriHow'}},
-  { path: 'confirmation/:token', component: ConfirmationComponent, data: {title : 'Email Address Verified - AfriHow'}},
-  { path: 'resend-email', component: ResendComponent, data: {title : 'Resend Email - AfriHow'}},
-  { path: 'reset-password/:id', component: ResetPasswordComponent, data: {title: 'Reset Password - AfriHow'} },
+  { path: 'pricing', component: PricingComponent, data: {title : 'Plans & Pricing - Right Foundation Children School'}},
+  { path: 'support', component: SupportComponent, data: {title : 'Support - Right Foundation Children School'}},
+  { path: 'resend-email', component: ResendComponent, data: {title : 'Resend Email - Right Foundation Children School'}},
+  { path: 'reset-password/:id', component: ResetPasswordComponent, data: {title: 'Reset Password - Right Foundation Children School'} },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Welcome to the School Portal - RFCS'} },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {title: 'My Profile - RFCS'} },
+  { path: 'subject', component: SubjectComponent, canActivate: [AuthGuard], data: {title: 'Subjects - RFCS'} },
   { path: '**', component: PageNotFoundComponent, data: {title : '404 - Page Not Found'}},
 
 ];

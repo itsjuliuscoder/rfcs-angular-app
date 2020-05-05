@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     this.loginErr = false;
   }
 
-  loginFormField(){
+  loginFormField() {
     this.loginForm = new FormGroup({
         loginEmail: new FormControl('', [Validators.required, CustomValidators.email]),
         loginPassword: new FormControl('', Validators.required),
@@ -73,13 +73,13 @@ export class LoginComponent implements OnInit {
       this.httpservice.login(payload).subscribe(
         (data: LoginInterface) => {
           this.getDisableBtn(false);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
         }, err => {
           if (err.code === 400) {
             this.getSweetAlert('', 'warning', err.error.message, 'login');
           } else {
             this.loginErr = true;
-            this.loginErrorMsg = err.error.messgae || 'Something went wrong, Please try again ';
+            this.loginErrorMsg = err.error.message || 'Email and Password Combination Failed';
           }
           this.getDisableBtn(false);
         }

@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './public/about/about.component';
-import { IndexComponent } from './public/index/index.component'
+import { IndexComponent } from './public/index/index.component';
 import { ContactComponent } from './public/contact/contact.component';
 import { ContactContainerComponent } from './public/contact/contact-container/contact-container.component';
 import { ContactBannerComponent } from './public/contact/contact-banner/contact-banner.component';
@@ -48,6 +48,10 @@ import { ConfirmationComponent } from './publisher/confirmation/confirmation.com
 import { ResendComponent } from './publisher/resend/resend.component';
 import { ResetPasswordComponent } from './publisher/reset-password/reset-password.component';
 import { JwtInterceptor } from './core/interceptors/interceptor.jwt';
+import { HomeComponent } from './publisher/home/home.component';
+import { ProfileComponent } from './publisher/profile/profile.component';
+import { SubjectComponent } from './publisher/subject/subject.component';
+import { TopicComponent } from './publisher/topic/topic.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +95,10 @@ import { JwtInterceptor } from './core/interceptors/interceptor.jwt';
     ConfirmationComponent,
     ResendComponent,
     ResetPasswordComponent,
+    HomeComponent,
+    ProfileComponent,
+    SubjectComponent,
+    TopicComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,7 @@ export class HttpService {
   }
 
 
-   public get currentUserValue(): any {
+  public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
 

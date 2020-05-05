@@ -1,50 +1,47 @@
 <div class="login">
   <div class="container">
-        <div class="login-form mt-4">
-            <h3 class="text-center">Login to School Portal</h3><br>
-            <div class="card mt-5">
-                <div class="card-body">
-                  <div class="login_img">
-                      <img src="./../../../assets/logo.png" class="img-fluid" alt="AfriHow Logo">
-                  </div>
-                  <form [formGroup]="loginForm" (ngSubmit)="login()">
-                    <div class="alert alert-danger" role="alert" *ngIf="loginErr">
-                      <button aria-label="Close" class="close ng-star-inserted" (click)="clearLoginErr()" type="button"><span aria-hidden="true">×</span></button>{{loginErrorMsg}}
-                    </div>
-                      <div>
-                          <input type="email" required class="form-control" formControlName="loginEmail" placeholder="Email Address">
-                          <div class="alert" role="alert" *ngIf="loginEmail.invalid && loginEmail.touched">
-                            <span style="color: red;" *ngIf="loginEmail.errors.required">Valid Email Address is required</span>
-                            <span style="color: red;" *ngIf="loginEmail.errors.maxlength">Maximum characters is 30</span>
-                            <span style="color: red;" *ngIf="loginEmail.errors.minlength">Minimum characters is 5</span>
-                            <span style="color: red;" *ngIf="loginEmail.errors.pattern">Invalid characters only</span>
-                          </div>
-                      </div>
-                      <div>
-                          <input type="password" required class="form-control" formControlName="loginPassword" placeholder="Password">
-                          <div class="alert" role="alert" *ngIf="loginPassword.invalid && loginPassword.touched">
-                            <span style="color: red;" *ngIf="loginPassword.errors.required">Password is required</span>
-                            <span style="color: red;" *ngIf="loginPassword.errors.maxlength">Maximum characters is 30</span>
-                            <span style="color: red;" *ngIf="loginPassword.errors.minlength">Minimum characters is 5</span>
-                            <span style="color: red;" *ngIf="loginPassword.errors.pattern">Invalid characters only</span>
-                          </div>
-                      </div>
-                      <div>
-                        <a href="#" routerLink="/reset-password">Forgot Password?</a>
-                      </div>
-                      <div class="form-row mt-4">
-                          <div class="col-md-7"><p>New to AfriHow? <a href="#" routerLink="/register">Create Account</a></p></div>
-                          <div class="col-md-5">
-                            <button type="submit" [disabled]="getDisableLoginState" class="btn btn-login btn-info">
-                              <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i>
-                              Continue
-                            </button>
-                          </div>
-                      </div>
-                  </form>
+      <div class="login-form mt-4">
+          <h3 class="text-center">Login to School Portal</h3><br>
+          <div class="card mt-5">
+              <div class="card-body">
+                <div class="login_img">
+                    <img src="./../../../assets/logo.png" class="img-fluid" alt="AfriHow Logo">
                 </div>
-            </div>
-        </div>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                  <div class="alert alert-danger" role="alert" *ngIf="loginErr">
+                    <button aria-label="Close" class="close ng-star-inserted" (click)="clearLoginErr()" type="button"><span aria-hidden="true">×</span></button>{{loginErrorMsg}}
+                  </div>
+                    <div>
+                        <input type="email" required class="form-control" formControlName="loginEmail" placeholder="Email Address">
+                        <div class="alert" role="alert" *ngIf="loginEmail.invalid && loginEmail.touched">
+                          <span style="color: red;" *ngIf="loginEmail.errors.required">Valid Email Address is required</span>
+                          <span style="color: red;" *ngIf="loginEmail.errors.maxlength">Maximum characters is 30</span>
+                          <span style="color: red;" *ngIf="loginEmail.errors.minlength">Minimum characters is 5</span>
+                          <span style="color: red;" *ngIf="loginEmail.errors.pattern">Invalid characters only</span>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="password" required class="form-control" formControlName="loginPassword" placeholder="Password">
+                        <div class="alert" role="alert" *ngIf="loginPassword.invalid && loginPassword.touched">
+                          <span style="color: red;" *ngIf="loginPassword.errors.required">Password is required</span>
+                          <span style="color: red;" *ngIf="loginPassword.errors.maxlength">Maximum characters is 30</span>
+                          <span style="color: red;" *ngIf="loginPassword.errors.minlength">Minimum characters is 5</span>
+                          <span style="color: red;" *ngIf="loginPassword.errors.pattern">Invalid characters only</span>
+                        </div>
+                    </div>
+                    <div class="form-row mt-4">
+                        <div class="col-md-9"><p>Forgot Password or could not Log In? Kindly Contact RFCS Admin </p></div>
+                        <div class="col-md-3">
+                          <button type="submit" class="btn btn-login btn-info">
+                            <!-- <i *ngIf="disableBtn" class="fa fa-spinner fa-spin"></i> -->
+                            Continue
+                          </button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+          </div>
+      </div>
   </div>
 </div>
 
