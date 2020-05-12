@@ -10,12 +10,20 @@ import { FormBuilder } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
+  subjects: any;
+
   constructor(
               private route: ActivatedRoute,
               private fb: FormBuilder,
               private router: Router,
               private httpservice: HttpService) { }
   ngOnInit() {
+
+    this.httpservice.getNews().subscribe((data) => {
+      console.log(data);
+      this.subjects = data;
+      // this.articles = data['articles'];
+    });
   }
 
   logout() {

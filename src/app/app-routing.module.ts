@@ -22,6 +22,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { HomeComponent } from './publisher/home/home.component';
 import { SubjectComponent } from './publisher/subject/subject.component';
 import { ProfileComponent } from './publisher/profile/profile.component';
+import { TopicComponent } from './publisher/topic/topic.component';
 
 const routes: Routes = [
 
@@ -45,7 +46,8 @@ const routes: Routes = [
   { path: 'reset-password/:id', component: ResetPasswordComponent, data: {title: 'Reset Password - Right Foundation Children School'} },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Welcome to the School Portal - RFCS'} },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {title: 'My Profile - RFCS'} },
-  { path: 'subject', component: SubjectComponent, canActivate: [AuthGuard], data: {title: 'Subjects - RFCS'} },
+  { path: 'subject/:id', component: SubjectComponent, canActivate: [AuthGuard], data: {title: 'Subjects - RFCS'} },
+  { path: 'topic/:id', component: TopicComponent, canActivate: [AuthGuard], data: {title: 'Topic - RFCS'} },
   { path: '**', component: PageNotFoundComponent, data: {title : '404 - Page Not Found'}},
 
 ];

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { RegisterInterface, LoginInterface, UserUpdate, ResetPassword, User } from './interface/auth-interface';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
@@ -16,7 +16,7 @@ export class HttpService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  public baseUrl = 'https://derights-api.herokuapp.com';
+  public baseUrl = 'http://localhost:3000';
 
   user;
 
@@ -62,6 +62,34 @@ export class HttpService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+  }
+
+  // get list of all subjects
+  listSubjects() {
+    // const params = new HttpParams().set('offset', offset).set('limit', limit);
+    return this.http.get<any>(`${this.baseUrl}/subjects`, this.appendAuthHeader());
+  }
+
+  // get a particular subject
+  getSubject(id: any) {
+    // const params = new HttpParams().set('offset', offset).set('limit', limit);
+    return this.http.get<any>(`${this.baseUrl}/subjects/${id}`, this.appendAuthHeader());
+  }
+
+  // get lists of topic of a particular subject
+  listTopics(id: any) {
+    // const params = new HttpParams().set('offset', offset).set('limit', limit);
+    return this.http.get<any>(`${this.baseUrl}/subjects/find/topics/${id}`, this.appendAuthHeader());
+  }
+
+  // get a single topic
+  getTopic(id: any) {
+    // const params = new HttpParams().set('offset', offset).set('limit', limit);
+    return this.http.get<any>(`${this.baseUrl}/topics/populate/${id}`, this.appendAuthHeader());
+  }
+
+  public getNews(){
+    return this.http.get(`${this.baseUrl}/subjects`);
   }
 
   // resend

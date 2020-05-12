@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   disableBtn = false;
   responseErr;
   confirmEmailErr;
+  subject: any;
 
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
@@ -46,6 +47,10 @@ export class LoginComponent implements OnInit {
 
   goToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  subjects() {
+   this.subject = this.httpservice.listSubjects();
   }
 
   clearLoginErr() {
