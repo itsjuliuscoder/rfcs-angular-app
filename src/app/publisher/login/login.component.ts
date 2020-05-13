@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
             this.getSweetAlert('error', 'Oops', 'warning', 'Email Address & Password Combination Failed', 'login');
           } else {
             this.loginErr = true;
-            this.loginErrorMsg = err.error.message || 'Something went wrong, Try again.';
+            this.loginErrorMsg = err.error.message || 'Something went wrong, Check your Internet Connection';
           }
           this.getDisableBtn(true);
         }
