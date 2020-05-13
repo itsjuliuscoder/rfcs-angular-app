@@ -43,6 +43,10 @@ export class LoginComponent implements OnInit {
       this.authType = data[data.length - 1].path;
     });
     this.loginFormField();
+    this.httpservice.getNews().subscribe((data) => {
+      this.subject = data;
+      console.log(this.subject[0].name);
+    });
   }
 
   goToLogin() {

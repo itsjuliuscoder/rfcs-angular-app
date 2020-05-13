@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from 'src/app/http.service';
 import { FormBuilder } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-topic',
@@ -13,9 +14,11 @@ export class TopicComponent implements OnInit {
   subjects: any;
   topics: string;
   video: 'bH2KVsjMxHI';
-  constructor(private route: ActivatedRoute, private httpservice: HttpService, private router: Router, private fb: FormBuilder) { }
+  safeSrc: SafeResourceUrl;
+  constructor(private route: ActivatedRoute, private httpservice: HttpService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
     });
@@ -27,8 +30,12 @@ export class TopicComponent implements OnInit {
     // get all topics related to the subject
     this.httpservice.getTopic(this.id).subscribe((data: any) => {
       this.topics = data;
-      console.log(this.topics);
+      // tslint:disable-next-line: no-string-literal
+      console.log(this.topics['topic_link']);
+      this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.topics['topic_link']);
     });
+
+
   }
 
   logout() {
