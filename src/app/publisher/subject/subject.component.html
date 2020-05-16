@@ -67,11 +67,17 @@
               </div>
               <div class="card" style="width: 100%;">
                 <div class="card-header" *ngIf="subject">
-                  <b>All {{subject.name}} Topics</b>
+                  <h4>All {{subject.name}} Topics </h4>
+                  <p>Select your topic according to the Group you belong</p>
                 </div>
-                <ul class="list-group list-group-flush" *ngFor="let topic of topics">
-                  <li class="list-group-item"><a href="topic/{{topic._id}}">{{topic.title}}</a></li>
-                </ul>
+                <div class="row p-4 mt-2" *ngFor="let topic of topics">
+                  <div class="col-md-6">
+                    <h5><a href="topic/{{topic._id}}">{{topic.title}}</a></h5>
+                  </div>
+                  <div class="col-md-6">
+                    <h5 class="text-right"> Group {{topic.group}}</h5>
+                  </div>
+                </div>
               </div>
           </div>
       </main>
